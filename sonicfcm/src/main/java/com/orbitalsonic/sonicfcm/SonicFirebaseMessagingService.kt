@@ -1,6 +1,5 @@
 package com.orbitalsonic.sonicfcm
 
-import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -50,7 +49,7 @@ class SonicFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(p0)
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+
     private fun sendNotification(
         icon: String,
         title: String,
