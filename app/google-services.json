@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "719774876918",
+    "project_id": "orbitalsonicfcm",
+    "storage_bucket": "orbitalsonicfcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719774876918:android:1cf0f930b0a01a94c758d7",
+        "android_client_info": {
+          "package_name": "com.orbitalsonic.orbitalsonicfcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719774876918-919has75p7572ut2rrpfrfd9jqlpfmak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrsstMiNwg_EurVKGIy9XC4Jg4JQd7cwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719774876918-919has75p7572ut2rrpfrfd9jqlpfmak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
