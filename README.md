@@ -94,7 +94,7 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
  Content-Type: application/json
  Authorization: key=AAAAp5XtBPY:APA91bG_fypMd0j... //FCM SERVER KEY
 ```
-* Now click on "Body" than select "Raw" and add value as object like below
+* Now click on "Body" than select "Raw" and add value as JSON object like below
 ```
 {
       "to":"/topics/YourTopicName", 
