@@ -30,4 +30,40 @@ no dependencies required
 
 ### Step 2
 
+Add maven repository in project level build.gradle or in latest project setting.gradle file
+```
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+```  
+
+### Step 3
+
+Add OrbitalSonicFCM dependencies in App level build.gradle.
+```
+    dependencies {
+            implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.1
+    }
+```  
+
+
+### Step 4
+
+Finally intialize Firebase and setup FCM in application class or in your "MainActivity"
+
+```
+    SonicFCM.setupFCM(this, "YourTopicName")
+```
+
+
+### Remove
+
+If you want to stop receiving notification from the subscribed topic simply call.
+```
+    SonicFCM.removeFCM("YourTopicName")
+```
+
+
 
