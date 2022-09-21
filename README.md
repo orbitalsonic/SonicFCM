@@ -100,7 +100,7 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
       "to":"/topics/YourTopicName", 
       "data":
       {
-            "title": "My Application Titile is Here",
+                "title": "My Application Titile is Here",
 	        "short_desc": "My Application Short Description is here",
 	        "long_desc": "My Application Long Description is here",
 	        "icon": "App Icon link is here",
@@ -118,6 +118,19 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 #### Body
 
 ![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
+
+### Note
+
+These Three items are mandatory for notification
+* title
+* icon
+* short_desc
+
+These Three items are optional for notification
+* long_desc
+* feature
+* package (in case of other app promotion)
+
 
 # LICENSE
 
