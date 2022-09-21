@@ -21,7 +21,7 @@ or
     id 'com.google.gms.google-services' version 'latest-version' apply false
 ```
     
-#### Plugin
+#### Plugin in App level build.gradle
 ```
     id 'com.google.gms.google-services'
 ```
