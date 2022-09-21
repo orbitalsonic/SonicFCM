@@ -91,8 +91,8 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 * Then change request type to "POST"
 * Now to click on Header and add two params "Content-Type" and "Authorization"
 ```
- Content-Type= application/json
- Authorization=AIzaSyAEb3NhsfGw1ih5mn8cmrGUAXMp86waQ //FCM SERVER KEY
+ Content-Type: application/json
+ Authorization: key=AAAAp5XtBPY:APA91bG_fypMd0j... //FCM SERVER KEY
 ```
 * Now click on "Body" than select "Raw" and add value as object like below
 ```
