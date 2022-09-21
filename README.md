@@ -88,7 +88,7 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 ```
  https://fcm.googleapis.com/fcm/send
 ```
-* Than change request type to "POST"
+* Then change request type to "POST"
 * Now to click on Header and add two params "Content-Type" and "Authorization"
 ```
  Content-Type= application/json
@@ -111,9 +111,9 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 ```
 ### Postman Screen
 
-![alt text]([https://github.com/orbitalsonic/Custom-Theme-Android/blob/master/Screenshots/Screenshot_1.jpg?raw=true](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true))
+![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true)
 
-![[alt text](https://github.com/orbitalsonic/Custom-Theme-Android/blob/master/Screenshots/Screenshot_1.jpg?raw=true](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true))
+![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
 
 # LICENSE
 
