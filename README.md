@@ -16,7 +16,7 @@ After completion of step one, your project should have a google-services.json fi
 ```
     classpath 'com.google.gms:google-services:latest-version'
 ```
-or
+or latest
 ```
     id 'com.google.gms.google-services' version 'latest-version' apply false
 ```
