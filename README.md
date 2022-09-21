@@ -111,7 +111,11 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 ```
 ### Postman Screen
 
+#### Header
+
 ![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true)
+
+#### Body
 
 ![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
 
