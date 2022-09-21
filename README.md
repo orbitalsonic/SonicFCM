@@ -65,5 +65,69 @@ If you want to stop receiving notification from the subscribed topic simply call
     SonicFCM.removeFCM("YourTopicName")
 ```
 
+# Send Data Message using the HTTP protocol with POSTMAN
 
+### Step 1
+
+You have to copy Legacy Server Key from Firebase Console > Project Settings > Cloud Messaging
+
+#### Note: 
+
+Firebase has upgraded our server keys to a new version. You may continue to use your Legacy server key, but it is recommended that you upgrade to the newest version.
+If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging API" from Firebase console, follow the following points
+
+* go to the google cloud platform website
+* go to APIs and Services
+* go to Enabled APIs & Services
+* click + Enable APIs and Services
+* search for Firebase In-App Messaging API and make sure it's enabled.
+
+### Step 2
+
+* Open Postman, click on Enter request URL textbox, enter firebase url
+```
+ https://fcm.googleapis.com/fcm/send
+```
+* Than change request type to "POST"
+* Now to click on Header and add two params "Content-Type" and "Authorization"
+```
+ Content-Type= application/json
+ Authorization=AIzaSyAEb3NhsfGw1ih5mn8cmrGUAXMp86waQ //FCM SERVER KEY
+```
+* Now click on "Body" than select "Raw" and add value as object like below
+```
+{
+      "to":"/topics/YourTopicName", 
+      "data":
+      {
+            "title": "My Application Titile is Here",
+	        "short_desc": "My Application Short Description is here",
+	        "long_desc": "My Application Long Description is here",
+	        "icon": "App Icon link is here",
+	        "feature": "App Feature Image Link is here",
+	        "package": "Promotional app package name is here"
+      }
+  }
+```
+### Postman Screen
+
+![alt text]([https://github.com/orbitalsonic/Custom-Theme-Android/blob/master/Screenshots/Screenshot_1.jpg?raw=true](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true))
+
+![[alt text](https://github.com/orbitalsonic/Custom-Theme-Android/blob/master/Screenshots/Screenshot_1.jpg?raw=true](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true))
+
+# LICENSE
+
+Copyright 2022 Engr. Muhammad Yaqoob
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
