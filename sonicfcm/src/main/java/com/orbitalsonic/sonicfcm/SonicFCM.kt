@@ -7,13 +7,17 @@ import android.os.Build
 import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.coroutines.runBlocking
 
 class SonicFCM {
     companion object {
         fun setupFCM(context: Context, topic: String) {
-            initializeFirebase(context)
-            createChannelForFCM(context)
-            FirebaseMessaging.getInstance().subscribeToTopic(topic)
+            runBlocking {
+                initializeFirebase(context)
+                createChannelForFCM(context)
+                FirebaseMessaging.getInstance().subscribeToTopic(topic)
+            }
+
         }
 
         fun removeFCM(topic: String) {

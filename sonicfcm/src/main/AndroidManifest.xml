@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.orbitalsonic.sonicfcm">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,11 +9,25 @@
         android:allowBackup="true">
         <service
             android:name=".SonicFirebaseMessagingService"
-            android:exported="true">
-            <intent-filter>
+            android:directBootAware="true"
+            android:exported="true"
+            tools:node="replace"
+            tools:targetApi="n">
+            <intent-filter android:priority="-500">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            tools:node="replace">
+
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
