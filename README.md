@@ -1,5 +1,5 @@
-# OrbitalSonicFCM
 [![](https://jitpack.io/v/orbitalsonic/OrbitalSonicFCM.svg)](https://jitpack.io/#orbitalsonic/OrbitalSonicFCM)
+# OrbitalSonicFCM
 
 OrbitalSonicFCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) Android library that demonstrates registering your Android app for notifications and handling the receipt of a message. Example Send Data Message using the HTTP protocol with [Postman](https://www.postman.com/).
 
@@ -44,7 +44,7 @@ Add maven repository in project level build.gradle or in latest project setting.
 Add OrbitalSonicFCM dependencies in App level build.gradle.
 ```
     dependencies {
-            implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.1
+            implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.2
     }
 ```  
 
