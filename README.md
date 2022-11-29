@@ -44,7 +44,7 @@ Add maven repository in project level build.gradle or in latest project setting.
 Add OrbitalSonicFCM dependencies in App level build.gradle.
 ```
     dependencies {
-            implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.2
+             implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.2'
     }
 ```  
 
