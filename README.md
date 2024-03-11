@@ -76,7 +76,7 @@ You have to copy Legacy Server Key from Firebase Console > Project Settings > Cl
 Firebase has upgraded our server keys to a new version. You may continue to use your Legacy server key, but it is recommended that you upgrade to the newest version.
 If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging API" from Firebase console.
 
-![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/firebase_screen3.png?raw=true)
+![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/firebase_screen3.png?raw=true)
 
 ### Step 2
 
@@ -108,11 +108,11 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 
 #### Header
 
-![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/postman_screen1.png?raw=true)
+![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true)
 
 #### Body
 
-![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/postman_screen2.png?raw=true)
+![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
 
 ### Note
 

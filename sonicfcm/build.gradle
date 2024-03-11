@@ -50,7 +50,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.orbitalsonic.sonicfcm'
             artifactId = 'sonicfcm'
-            version = '1.0.3'
+            version = '1.0.4'
 
             afterEvaluate {
                 from components.release
