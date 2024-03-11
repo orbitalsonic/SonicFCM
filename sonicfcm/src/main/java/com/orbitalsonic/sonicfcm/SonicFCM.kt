@@ -1,5 +1,6 @@
 package com.orbitalsonic.sonicfcm
 
+
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -9,6 +10,13 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.runBlocking
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 13,Feb,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class SonicFCM {
     companion object {
         fun setupFCM(context: Context, topic: String) {
@@ -17,7 +25,6 @@ class SonicFCM {
                 createChannelForFCM(context)
                 FirebaseMessaging.getInstance().subscribeToTopic(topic)
             }
-
         }
 
         fun removeFCM(topic: String) {
@@ -28,7 +35,7 @@ class SonicFCM {
             try {
                 FirebaseApp.initializeApp(context)
             } catch (e: Exception) {
-                Log.e("TAG", "onCreate: ${e.message}")
+                Log.e("SonicFirebaseMsgService", "onCreate: ${e.message}")
             }
         }
 

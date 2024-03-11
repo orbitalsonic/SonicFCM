@@ -1,7 +1,7 @@
-[![](https://jitpack.io/v/orbitalsonic/OrbitalSonicFCM.svg)](https://jitpack.io/#orbitalsonic/OrbitalSonicFCM)
-# OrbitalSonicFCM
+[![](https://jitpack.io/v/hypersoftdev/fcm.svg)](https://jitpack.io/#hypersoftdev/fcm)
+# FCM
 
-OrbitalSonicFCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) Android library that demonstrates registering your Android app for notifications and handling the receipt of a message. Example Send Data Message using the HTTP protocol with [Postman](https://www.postman.com/).
+FCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) Android library that demonstrates registering your Android app for notifications and handling the receipt of a message. Example Send Data Message using the HTTP protocol with [Postman](https://www.postman.com/).
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ OrbitalSonicFCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs
 
 [Add firebase to your Android App](https://firebase.google.com/docs/android/setup)
 
-#### Note: 
+#### Note:
 After completion of step one, your project should have a google-services.json file added to the root of your project along with the classpath, plugin and dependecies
 
 #### Classpath in project level build.gradle
@@ -20,7 +20,7 @@ or latest
 ```
     id 'com.google.gms.google-services' version 'latest-version' apply false
 ```
-    
+
 #### Plugin in App level build.gradle
 ```
     id 'com.google.gms.google-services'
@@ -41,10 +41,10 @@ Add maven repository in project level build.gradle or in latest project setting.
 
 ### Step 3
 
-Add OrbitalSonicFCM dependencies in App level build.gradle.
+Add FCM dependencies in App level build.gradle.
 ```
     dependencies {
-             implementation 'com.github.orbitalsonic:OrbitalSonicFCM:1.0.2'
+             implementation 'com.github.orbitalsonic:sonicfcm:1.0.3'
     }
 ```  
 
@@ -71,16 +71,12 @@ If you want to stop receiving notification from the subscribed topic simply call
 
 You have to copy Legacy Server Key from Firebase Console > Project Settings > Cloud Messaging
 
-#### Note: 
+#### Note:
 
 Firebase has upgraded our server keys to a new version. You may continue to use your Legacy server key, but it is recommended that you upgrade to the newest version.
-If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging API" from Firebase console, follow the following points
+If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging API" from Firebase console.
 
-* go to the google cloud platform website
-* go to APIs and Services
-* go to Enabled APIs & Services
-* click + Enable APIs and Services
-* search for Firebase In-App Messaging API and make sure it's enabled.
+![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/firebase_screen3.png?raw=true)
 
 ### Step 2
 
@@ -102,7 +98,6 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
       {
                 "title": "My Application Titile is Here",
 	        "short_desc": "My Application Short Description is here",
-	        "long_desc": "My Application Long Description is here",
 	        "icon": "App Icon link is here",
 	        "feature": "App Feature Image Link is here",
 	        "package": "Promotional app package name is here"
@@ -113,11 +108,11 @@ If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging 
 
 #### Header
 
-![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true)
+![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/postman_screen1.png?raw=true)
 
 #### Body
 
-![alt text](https://github.com/orbitalsonic/OrbitalSonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
+![alt text](https://github.com/hypersoftdev/fcm/blob/master/Screenshots/postman_screen2.png?raw=true)
 
 ### Note
 
@@ -134,7 +129,7 @@ These Three items are optional for notification
 
 # LICENSE
 
-Copyright 2022 Engr. Muhammad Yaqoob
+Copyright 2022 OrbitalSonic
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

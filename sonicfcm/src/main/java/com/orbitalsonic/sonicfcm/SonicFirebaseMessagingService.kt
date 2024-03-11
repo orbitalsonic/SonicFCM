@@ -5,6 +5,8 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
@@ -13,27 +15,33 @@ import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.squareup.picasso.Picasso
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 import java.util.concurrent.atomic.AtomicInteger
 
-
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 13,Feb,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class SonicFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         //Data available
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message data payload: ${remoteMessage.data}")
-
             //fetch data into variables
             val icon = remoteMessage.data["icon"]
             val title = remoteMessage.data["title"]
             val shortDesc = remoteMessage.data["short_desc"]
-            val longDesc = remoteMessage.data["long_desc"]
-            val image = remoteMessage.data["feature"]
+            val featureImage = remoteMessage.data["feature"]
             val packageName = remoteMessage.data["package"]
 
             //send notification
@@ -41,7 +49,7 @@ class SonicFirebaseMessagingService : FirebaseMessagingService() {
                 return
             } else {
                 Handler(this.mainLooper).post {
-                    sendNotification(icon, title, shortDesc, image, longDesc, packageName)
+                    sendNotification(icon, title, shortDesc, featureImage, packageName)
                 }
             }
         }
@@ -51,27 +59,19 @@ class SonicFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(p0)
     }
 
-
     private fun sendNotification(
         icon: String,
         title: String,
         shortDesc: String,
         image: String?,
-        longDesc: String?,
         storePackage: String?
     ) {
-
         //Open PlayStore
-        val mIntent = if (storePackage != null){
-            if (isCrossPromotionPackage(storePackage)) {
-                setStoreIntent(storePackage)
-            } else {
-                openApp(storePackage)
-            }
-        }else{
+        val mIntent = if (storePackage != null && isCrossPromotionPackage(storePackage)) {
+            setStoreIntent(storePackage)
+        } else {
             openApp(packageName)
         }
-
 
         mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -85,11 +85,15 @@ class SonicFirebaseMessagingService : FirebaseMessagingService() {
             PendingIntent.getActivity(this, 0, mIntent, PendingIntent.FLAG_ONE_SHOT)
         }
 
-
         //Make Remote Views For text
         val remoteViews = RemoteViews(packageName, R.layout.firebase_notification_view)
         remoteViews.setTextViewText(R.id.tv_title, title)
         remoteViews.setTextViewText(R.id.tv_short_desc, shortDesc)
+
+
+        if (storePackage != null && isCrossPromotionPackage(storePackage)) {
+            remoteViews.setViewVisibility(R.id.tv_ad, View.VISIBLE)
+        }
 
         //Notification Parameters
         val channelId = getString(R.string.default_notification_channel_id)
@@ -120,20 +124,50 @@ class SonicFirebaseMessagingService : FirebaseMessagingService() {
         val notificationID = getNextInt()
         notificationManager.notify(notificationID, notificationBuilder.build())
 
-
         //Set Images into remoteViews
         try {
-            Picasso.get().load(icon)
-                .into(remoteViews, R.id.iv_icon, notificationID, notificationBuilder.build())
+            // Load icon image using Glide
+            Glide.with(this)
+                .asBitmap()
+                .load(icon)
+                .into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+                        remoteViews.setImageViewBitmap(R.id.iv_icon, resource)
+                        notificationManager.notify(notificationID, notificationBuilder.build())
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        // Do nothing
+                    }
+                })
+
             if (image != null) {
-                remoteViews.setViewVisibility(R.id.iv_feature, View.VISIBLE)
-                Picasso.get().load(image)
-                    .into(remoteViews, R.id.iv_feature, notificationID, notificationBuilder.build())
+                // Load feature image using Glide
+                Glide.with(this)
+                    .asBitmap()
+                    .load(image)
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap>?
+                        ) {
+                            remoteViews.setViewVisibility(R.id.iv_feature, View.VISIBLE)
+                            remoteViews.setImageViewBitmap(R.id.iv_feature, resource)
+                            notificationManager.notify(notificationID, notificationBuilder.build())
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                            // Do nothing
+                        }
+                    })
             }
-        } catch (e: Exception) {
-        } catch (e: java.lang.Exception) {
-        } catch (e: IllegalStateException) {
-        } catch (e: IllegalArgumentException) {
+        } catch (ignore: IllegalArgumentException) {
+        } catch (ignore: java.lang.Exception) {
+        } catch (ignore: IllegalStateException) {
+        } catch (ignore: Exception) {
         }
     }
 

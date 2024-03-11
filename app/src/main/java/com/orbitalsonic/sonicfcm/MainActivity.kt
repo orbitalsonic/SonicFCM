@@ -1,8 +1,7 @@
-package com.orbitalsonic.orbitalsonicfcm
+package com.orbitalsonic.sonicfcm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.orbitalsonic.sonicfcm.SonicFCM
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
