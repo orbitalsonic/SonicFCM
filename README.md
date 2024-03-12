@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/hypersoftdev/fcm.svg)](https://jitpack.io/#hypersoftdev/fcm)
+[![](https://jitpack.io/v/orbitalsonic/SonicFCM.svg)](https://jitpack.io/#orbitalsonic/SonicFCM)
 # FCM
 
 FCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) Android library that demonstrates registering your Android app for notifications and handling the receipt of a message. Example Send Data Message using the HTTP protocol with [Postman](https://www.postman.com/).
@@ -10,9 +10,9 @@ FCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messa
 [Add firebase to your Android App](https://firebase.google.com/docs/android/setup)
 
 #### Note:
-After completion of step one, your project should have a google-services.json file added to the root of your project along with the classpath, plugin and dependecies
+After completion of step one, your project should have a google-services.json file added to the root of your project along with the classpath, plugin, and dependencies
 
-#### Classpath in project level build.gradle
+#### Classpath in project-level build.gradle
 ```
     classpath 'com.google.gms:google-services:latest-version'
 ```
@@ -30,7 +30,7 @@ no dependencies required
 
 ### Step 2
 
-Add maven repository in project level build.gradle or in latest project setting.gradle file
+Add maven repository in project-level build.gradle or in the latest project setting.gradle file
 ```
     repositories {
         google()
@@ -44,14 +44,14 @@ Add maven repository in project level build.gradle or in latest project setting.
 Add FCM dependencies in App level build.gradle.
 ```
     dependencies {
-             implementation 'com.github.orbitalsonic:sonicfcm:1.0.3'
+             implementation 'com.github.orbitalsonic:SonicFCM:2.0.0-alpha-01'
     }
 ```  
 
 
 ### Step 4
 
-Finally intialize Firebase and setup FCM in application class or in your "MainActivity"
+Finally, initialize Firebase and setup FCM in the application class or your "MainActivity"
 
 ```
     SonicFCM.setupFCM(this, "YourTopicName")
@@ -60,43 +60,43 @@ Finally intialize Firebase and setup FCM in application class or in your "MainAc
 
 ### Remove
 
-If you want to stop receiving notification from the subscribed topic simply call.
+If you want to stop receiving notifications from the subscribed topic simply call.
 ```
     SonicFCM.removeFCM("YourTopicName")
 ```
 
-# Send Data Message using the HTTP protocol with POSTMAN
+# Send Data Messages using the HTTP protocol with POSTMAN
 
 ### Step 1
 
-You have to copy Legacy Server Key from Firebase Console > Project Settings > Cloud Messaging
+You have to copy the Legacy Server Key from Firebase Console > Project Settings > Cloud Messaging
 
 #### Note:
 
 Firebase has upgraded our server keys to a new version. You may continue to use your Legacy server key, but it is recommended that you upgrade to the newest version.
-If anyone else is facing any issue then First Enabled "Firebase Cloud Messaging API" from Firebase console.
+If anyone else is facing any issues then First Enabled "Firebase Cloud Messaging API" from the Firebase console.
 
 ![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/firebase_screen3.png?raw=true)
 
 ### Step 2
 
-* Open Postman, click on Enter request URL textbox, enter firebase url
+* Open Postman, click on Enter request URL textbox, enter Firebase URL
 ```
  https://fcm.googleapis.com/fcm/send
 ```
-* Then change request type to "POST"
-* Now to click on Header and add two params "Content-Type" and "Authorization"
+* Then change the request type to "POST"
+* Now click on Header and add two params "Content-Type" and "Authorization"
 ```
  Content-Type: application/json
  Authorization: key=AAAAp5XtBPY:APA91bG_fypMd0j... //FCM SERVER KEY
 ```
-* Now click on "Body" than select "Raw" and add value as JSON object like below
+* Now click on "Body" then select "Raw" and add value as JSON object like below
 ```
 {
       "to":"/topics/YourTopicName", 
       "data":
       {
-                "title": "My Application Titile is Here",
+                "title": "My Application Title is Here",
 	        "short_desc": "My Application Short Description is here",
 	        "icon": "App Icon link is here",
 	        "feature": "App Feature Image Link is here",
@@ -124,7 +124,7 @@ These Three items are mandatory for notification
 These Three items are optional for notification
 * long_desc
 * feature
-* package (in case of other app promotion)
+* package (in case of other app promotions)
 
 
 # LICENSE
