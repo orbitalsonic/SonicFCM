@@ -43,9 +43,7 @@ Add maven repository in project-level build.gradle or in the latest project sett
 
 Add FCM dependencies in App level build.gradle.
 ```
-    dependencies {
-             implementation 'com.github.orbitalsonic:SonicFCM:2.0.0-alpha-01'
-    }
+    implementation 'com.github.orbitalsonic:SonicFCM:2.0.0-alpha-01'
 ```  
 
 
