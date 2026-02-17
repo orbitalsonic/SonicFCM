@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ad">AD</string>
-    <string name="feature_here">Feature Image Here</string>
-    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="default_notification_channel_name" translatable="false">Promotion Notification Channel</string>
+    <string name="default_notification_channel_id" translatable="false">default_notification_channel_id</string>
+    <string name="default_notification_channel_name" translatable="false">FCM Notification Channel</string>
+    <string name="default_notification_channel_group_name" translatable="false">com.orbitalsonic.sonicfcm_group_name</string>
 </resources>

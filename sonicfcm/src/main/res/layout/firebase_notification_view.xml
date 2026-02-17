@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -15,7 +15,11 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="10dp"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            tools:src="@tools:sample/avatars"
+            tools:visibility="visible"
+            android:visibility="gone"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,33 +35,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:layout_toStartOf="@+id/tv_ad"
                 android:lines="1"
+                android:ellipsize="end"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
-
+                android:textStyle="bold"
+                tools:text="Here is Notification Title"
+                />
 
             <TextView
-                android:id="@+id/tv_short_desc"
-                style="Custom Notification Text"
+                android:id="@+id/tv_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title"
                 android:maxLines="2"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_ad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/round_corners_2dp"
-                android:backgroundTint="#FFB74D"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/ad"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                tools:text="Here is Notification Body"/>
 
         </RelativeLayout>
 
@@ -66,14 +59,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ImageView
             android:id="@+id/iv_feature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/feature_here"
+            android:importantForAccessibility="no"
             android:scaleType="fitCenter"
-            android:visibility="gone" />
+            tools:visibility="visible"
+            android:visibility="gone"
+            tools:src="@tools:sample/avatars"/>
     </RelativeLayout>
 </LinearLayout>
