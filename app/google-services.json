@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "166150992325",
-    "project_id": "sonicfcm-de3b8",
-    "storage_bucket": "sonicfcm-de3b8.appspot.com"
+    "project_number": "1061074679145",
+    "project_id": "sonicfcm-84dd8",
+    "storage_bucket": "sonicfcm-84dd8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:166150992325:android:e96055e662d5d17a2a5bac",
+        "mobilesdk_app_id": "1:1061074679145:android:244041c6dd22aa70a7f9f8",
         "android_client_info": {
           "package_name": "com.orbitalsonic.sonicfcm"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdIcu2iIYaqSEkO-5JqNsdFuKLA7ynEfc"
+          "current_key": "AIzaSyClXXJH7Y4BHxcEgUOD0cZyLDH7y-Ew_Ys"
         }
       ],
       "services": {

@@ -7,10 +7,15 @@ import com.orbitalsonic.sonicfcm.notification.NotificationChannelHelper
 
 object SonicFcmManager {
     fun setupFcm(context: Context, topic: String) {
-        FirebaseApp.initializeApp(context)
         NotificationChannelHelper.create(context)
         FirebaseMessaging.getInstance().apply {
             subscribeToTopic(topic)
+        }
+    }
+
+    fun removeFCM(topic: String){
+        FirebaseMessaging.getInstance().apply {
+            unsubscribeFromTopic(topic)
         }
     }
 }

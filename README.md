@@ -1,139 +1,207 @@
 [![](https://jitpack.io/v/orbitalsonic/SonicFCM.svg)](https://jitpack.io/#orbitalsonic/SonicFCM)
-# FCM
 
-FCM is a [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) Android library that demonstrates registering your Android app for notifications and handling the receipt of a message. Example Send Data Message using the HTTP protocol with [Postman](https://www.postman.com/).
+# SonicFCM 🚀
 
-## Getting Started
+SonicFCM is a lightweight Android library built on top of [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) (FCM) that makes receiving and displaying push notifications extremely simple.
 
-### Step 1
+# 📦 Installation
 
-[Add firebase to your Android App](https://firebase.google.com/docs/android/setup)
+## Step 1 --- Add Firebase to your App
 
-#### Note:
-After completion of step one, your project should have a google-services.json file added to the root of your project along with the classpath, plugin, and dependencies
+Follow the official Firebase guide:
+https://firebase.google.com/docs/android/setup
 
-#### Classpath in project-level build.gradle
-```
-    classpath 'com.google.gms:google-services:latest-version'
-```
-or latest
-```
-    id 'com.google.gms.google-services' version 'latest-version' apply false
+Make sure you have added: - `google-services.json` - Google Services
+Gradle plugin - Firebase dependencies
+
+### Project-level build.gradle
+``` gradle
+id 'com.google.gms.google-services' version 'latest-version' apply false
 ```
 
-#### Plugin in App level build.gradle
-```
-    id 'com.google.gms.google-services'
-```
-#### Dependencies
-no dependencies required
+### App-level build.gradle
 
-### Step 2
-
-Add maven repository in project-level build.gradle or in the latest project setting.gradle file
+``` gradle
+id 'com.google.gms.google-services'
 ```
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
+
+------------------------------------------------------------------------
+
+## Step 2 --- Add JitPack Repository
+
+Add in `settings.gradle`:
+
+``` gradle
+repositories {
+    google()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+```
+
+------------------------------------------------------------------------
+
+## Step 3 --- Add Dependency
+
+Add in app-level `build.gradle`: latest version [![](https://jitpack.io/v/orbitalsonic/SonicFCM.svg)](https://jitpack.io/#orbitalsonic/SonicFCM)
+
+``` gradle
+implementation 'com.github.orbitalsonic:SonicFCM:3.1.3'
+```
+
+------------------------------------------------------------------------
+
+# 🚀 Usage
+
+## Minimal Setup
+
+### ✅ Subscribe to Topic
+
+Call inside `Application` class or `MainActivity`:
+
+``` kotlin
+SonicFcmManager.setupFcm(context, "YourTopicName")
+```
+
+### ❌ Remove Topic Subscription
+
+``` kotlin
+SonicFcmManager.removeFCM("YourTopicName")
+```
+
+------------------------------------------------------------------------
+# 📩 Sending Notifications
+
+You can send notifications using:
+
+1.  Firebase Console\
+2.  Postman (HTTP v1 API)
+
+------------------------------------------------------------------------
+
+# 🔐 Sending Notification via Postman (HTTP v1 API)
+
+1.  Enable **Firebase Cloud Messaging API** in Google Cloud Console\
+2.  Generate `service-account.json` from Service Accounts\
+3.  Use it to generate access token
+
+⚠️ NEVER upload `service-account.json` publicly.
+
+![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/firebase_screen.png?raw=true)
+
+------------------------------------------------------------------------
+
+## Android Example --- Generate Access Token (DEBUG ONLY)
+
+Add `service-account.json` inside the `assets` folder:
+
+``` kotlin
+private fun setupFirebaseMessaging() {
+    if (BuildConfig.DEBUG) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val credentials = assets.open("service-accounts.json").use { inputStream ->
+                    GoogleCredentials.fromStream(inputStream)
+                        .createScoped(listOf("https://www.googleapis.com/auth/firebase.messaging"))
+                }
+                credentials.refreshIfExpired()
+                val token = credentials.accessToken.tokenValue
+
+                Log.i("accessTokenTAG", "ACCESS-TOKEN = $token")
+            } catch (e: Exception) {
+                Log.e("accessTokenTAG", "ACCESS-TOKEN = $e")
+            }
+        }
     }
-```  
-
-### Step 3
-
-Add FCM dependencies in App level build.gradle.
-```
-    implementation 'com.github.orbitalsonic:SonicFCM:2.0.1'
-```  
-
-
-### Step 4
-
-Finally, initialize Firebase and setup FCM in the application class or your "MainActivity"
-
-```
-    SonicFCM.setupFCM(this, "YourTopicName")
+}
 ```
 
+------------------------------------------------------------------------
 
-### Remove
+## ⚠️ Security Disclaimer
 
-If you want to stop receiving notifications from the subscribed topic simply call.
-```
-    SonicFCM.removeFCM("YourTopicName")
-```
+This method is **DEBUG ONLY**.
 
-# Send Data Messages using the HTTP protocol with POSTMAN
+-   Do NOT commit `service-account.json`
+-   Do NOT ship it in production
+-   Use a secure backend server in production
+-   Delete the file after generating token
+-   NEVER upload it publicly
 
-### Step 1
+------------------------------------------------------------------------
 
-You have to copy the Legacy Server Key from Firebase Console > Project Settings > Cloud Messaging
+## 📬 Postman Request
 
-#### Note:
+### POST URL
 
-Firebase has upgraded our server keys to a new version. You may continue to use your Legacy server key, but it is recommended that you upgrade to the newest version.
-If anyone else is facing any issues then First Enabled "Firebase Cloud Messaging API" from the Firebase console.
+    https://fcm.googleapis.com/v1/projects/YOUR_PROJECT_ID/messages:send
 
-![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/firebase_screen3.png?raw=true)
+### Headers
 
-### Step 2
+    Authorization: Bearer YOUR_ACCESS_TOKEN
+    Content-Type: application/json
 
-* Open Postman, click on Enter request URL textbox, enter Firebase URL
-```
- https://fcm.googleapis.com/fcm/send
-```
-* Then change the request type to "POST"
-* Now click on Header and add two params "Content-Type" and "Authorization"
-```
- Content-Type: application/json
- Authorization: key=AAAAp5XtBPY:APA91bG_fypMd0j... //FCM SERVER KEY
-```
-* Now click on "Body" then select "Raw" and add value as JSON object like below
-```
+------------------------------------------------------------------------
+
+## 📦 Sample Payloads
+
+### General Notification
+
+``` json
 {
-      "to":"/topics/YourTopicName", 
-      "data":
-      {
-                "title": "My Application Title is Here",
-	        "short_desc": "My Application Short Description is here",
-	        "icon": "App Icon link is here",
-	        "feature": "App Feature Image Link is here",
-	        "package": "Promotional app package name is here"
-      }
+  "message": {
+    "topic": "myTopicName",
+    "data": {
+      "type": "GENERAL",
+      "title": "Hello from SonicFCM",
+      "body": "This is a test notification",
+      "icon": "https://yourdomain.com/icon.png",
+      "feature": "https://yourdomain.com/banner.png"
+    }
   }
+}
 ```
+
+### External Link Notification
+
+``` json
+{
+  "message": {
+    "topic": "YourTopicName",
+    "data": {
+      "type": "EXTERNAL_LINK",
+      "title": "Hello from SonicFCM",
+      "body": "This is a test notification",
+      "icon": "https://yourdomain.com/icon.png",
+      "feature": "https://yourdomain.com/banner.png",
+      "url": "https://yourdomain.com"
+    }
+  }
+}
+```
+
+------------------------------------------------------------------------
+
 ### Postman Screen
+![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/postman_screen.png?raw=true)
 
-#### Header
+------------------------------------------------------------------------
 
-![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/postman_screen1.png?raw=true)
+# 🔔 Notification Permission (Android 13+)
 
-#### Body
+Starting from **Android 13 (API level 33)**, apps must request notification permission at runtime in order to receive and display notifications. Without this permission, notifications will not appear on the device.
 
-![alt text](https://github.com/orbitalsonic/SonicFCM/blob/master/Screenshots/postman_screen2.png?raw=true)
+------------------------------------------------------------------------
 
-### Note
-
-These Three items are mandatory for notification
-* title
-* icon
-* short_desc
-
-These Three items are optional for notification
-* long_desc
-* feature
-* package (in case of other app promotions)
-
-
-# LICENSE
+# 📄 License
 
 Copyright 2022 OrbitalSonic
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may
+not use this file except in compliance with the License. You may obtain
+a copy of the License at:
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
